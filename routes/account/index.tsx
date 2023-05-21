@@ -48,26 +48,27 @@ export default function AccountPage(props: PageProps<AccountState>) {
             crossOrigin="anonymous"
             class="max-w-[50%] self-center rounded-full aspect-square mb-4 md:mb-6"
           />
-          <h1 class="text-3xl mb-4">
-            <strong>Account</strong>
+          <h1 class="text-3xl mb-4 text-gray-500 text-center">
+            {props.data.user.login}
           </h1>
-          <ul>
-            <Row
-              title="Username"
-              text={props.data.user.login}
-            />
-            <Row
-              title="Subscription"
-              text={props.data.user.isSubscribed ? "Premium 🦕" : "Free"}
-            >
-              <a
-                class="underline"
-                href={`/account/${action.toLowerCase()}`}
-              >
-                {action}
-              </a>
-            </Row>
-          </ul>
+          <div class="py-4">
+            <div class="flex flex-wrap justify-between ">
+              <span>
+                <strong>Subscription</strong>
+              </span>
+              <span>
+                <a
+                  class="underline"
+                  href={`/account/${action.toLowerCase()}`}
+                >
+                  {action}
+                </a>
+              </span>
+            </div>
+            <p>
+              {props.data.user.isSubscribed ? "Premium 🦕" : "Free"}
+            </p>
+          </div>
           <a
             href="/logout"
             class={`${BUTTON_STYLES} block text-center mt-8`}
